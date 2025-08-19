@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AMMU_KUTTY</title>
+  <style>
+    /* Body with premium background */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      overflow-y: auto;
+      position: relative;
+
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      background-attachment: fixed;
+      color: white;
+    }
+
+    /* Animated glowing particles */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/stardust.png');
+      opacity: 0.2;
+      z-index: 0;
+      animation: twinkle 12s linear infinite;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.15; }
+      50% { opacity: 0.25; }
+      100% { opacity: 0.15; }
+    }
+
+    /* Floating GP watermark */
+    body::after {
+      content: "GP";
+      position: fixed;
+      font-size: 220px;
+      font-weight: 900;
+      font-family: Arial Black, sans-serif;
+      color: rgba(255, 255, 255, 0.05);
+      top: 20%;
+      left: 10%;
+      z-index: 1;
+      pointer-events: none;
+      text-shadow: 0 0 25px rgba(255,255,255,0.3);
+      animation: floatAround 18s ease-in-out infinite alternate,
+                 pulse 10s infinite;
+    }
+
+    @keyframes floatAround {
+      0%   { transform: translate(0, 0) rotate(10deg); }
+      25%  { transform: translate(80px, 40px) rotate(12deg); }
+      50%  { transform: translate(120px, -60px) rotate(15deg); }
+      75%  { transform: translate(-60px, -30px) rotate(13deg); }
+      100% { transform: translate(0, 0) rotate(10deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.05; }
+      50%      { opacity: 0.15; }
+    }
+
+    /* Chat container */
+    .chat-container {
+      width: 100%;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      margin: 40px auto;
+      z-index: 2;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Profile DP */
+    .profile-header {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background: linear-gradient(135deg, #007bff, #00c6ff);
+      border-bottom: 2px solid #eee;
+    }
+
+    .profile-header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 4px solid white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+      object-fit: cover;
+    }
+
+    .profile-header img:hover {
+      transform: scale(1.1);
+    }
+
+    .profile-header h2 {
+      margin-top: 12px;
+      font-size: 20px;
+      color: white;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
+
+    /* Chat box */
+    #chat-box {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      border-bottom: 1px solid #ddd;
+      max-height: 70vh;
+      scroll-behavior: smooth;
+    }
+
+    /* Messages */
+    .message {
+      margin-bottom: 16px;
+      padding: 12px 16px;
+      border-radius: 16px;
+      max-width: 80%;
+      word-wrap: break-word;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .user {
+      background: linear-gradient(135deg, #6bb9f0, #2980b9);
+      align-self: flex-end;
+      color: white;
+    }
+
+    .bot {
+      background: linear-gradient(135deg, #a8e6cf, #56ab2f);
+      align-self: flex-start;
+      color: #003300;
+    }
+
+    /* Chat input area */
+    form {
+      display: flex;
+      padding: 12px;
+      background-color: #f8f9fa;
+      border-top: 1px solid #ddd;
+    }
+
+    input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1px solid #ccc;
+      border-radius: 24px;
+      font-size: 16px;
+      outline: none;
+      transition: border 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 6px rgba(0,123,255,0.5);
+    }
+
+    button {
+      margin-left: 10px;
+      padding: 12px 20px;
+      background: linear-gradient(to right, #007bff, #0056b3);
+      color: white;
+      border: none;
+      border-radius: 24px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #0056b3, #003d80);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    
+    <!-- Profile Header with Cyber Girl -->
+    <div class="profile-header">
+      <img src="GIRL.jpg" alt="Cyber Girl DP">
+      <h2>AMMU-KUTTY</h2>
+    </div>
+
+    <div id="chat-box"></div>
+    
+    <form id="chat-form">
+      <input type="text" id="user-input" placeholder="Type your message..." required />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('chat-form');
+    const input = document.getElementById('user-input');
+    const chatBox = document.getElementById('chat-box');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const userMessage = input.value.trim();
+      if (!userMessage) return;
+
+      appendMessage('You', userMessage, 'user');
+      input.value = '';
+
+      try {
+        const response = await fetch(
+          'https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=AIzaSyCpwvGyDtHVQqXAHsqkN0Ezg6nfp1AK8a8',
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              contents: [{ parts: [{ text: userMessage }] }]
+            })
+          }
+        );
+
+        const data = await response.json();
+        const botReply = data?.candidates?.[0]?.content?.parts?.[0]?.text || '🤖 No response received.';
+        appendMessage('Ammu', botReply, 'bot');
+      } catch (error) {
+        appendMessage('Ammu', '⚠️ Error connecting to Gemini API.', 'bot');
+        console.error('API error:', error);
+      }
+    });
+
+    function appendMessage(sender, message, type) {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = `message ${type}`;
+      msgDiv.innerHTML = `<strong>${sender}:</strong><br>${message}`;
+      chatBox.appendChild(msgDiv);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+  </script>
+</body>
+</html>
