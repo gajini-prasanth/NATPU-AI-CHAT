@@ -3,204 +3,179 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AMMU_KUTTY</title>
+  <title>NATPU-AI</title>
   <style>
-    /* Body with premium background */
+    /* Background Gradient */
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: "Poppins", sans-serif;
       margin: 0;
       padding: 0;
-      min-height: 100vh;
+      height: 100vh;
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      overflow-y: auto;
-      position: relative;
-
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      background-attachment: fixed;
-      color: white;
-    }
-
-    /* Animated glowing particles */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://www.transparenttextures.com/patterns/stardust.png');
-      opacity: 0.2;
-      z-index: 0;
-      animation: twinkle 12s linear infinite;
-    }
-
-    @keyframes twinkle {
-      0% { opacity: 0.15; }
-      50% { opacity: 0.25; }
-      100% { opacity: 0.15; }
-    }
-
-    /* Floating GP watermark */
-    body::after {
-      content: "GP";
-      position: fixed;
-      font-size: 220px;
-      font-weight: 900;
-      font-family: Arial Black, sans-serif;
-      color: rgba(255, 255, 255, 0.05);
-      top: 20%;
-      left: 10%;
-      z-index: 1;
-      pointer-events: none;
-      text-shadow: 0 0 25px rgba(255,255,255,0.3);
-      animation: floatAround 18s ease-in-out infinite alternate,
-                 pulse 10s infinite;
-    }
-
-    @keyframes floatAround {
-      0%   { transform: translate(0, 0) rotate(10deg); }
-      25%  { transform: translate(80px, 40px) rotate(12deg); }
-      50%  { transform: translate(120px, -60px) rotate(15deg); }
-      75%  { transform: translate(-60px, -30px) rotate(13deg); }
-      100% { transform: translate(0, 0) rotate(10deg); }
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 0.05; }
-      50%      { opacity: 0.15; }
-    }
-
-    /* Chat container */
-    .chat-container {
-      width: 100%;
-      max-width: 600px;
-      background: rgba(255, 255, 255, 0.92);
-      border-radius: 16px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
-      display: flex;
-      flex-direction: column;
-      margin: 40px auto;
-      z-index: 2;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Profile DP */
-    .profile-header {
-      display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 20px;
-      background: linear-gradient(135deg, #007bff, #00c6ff);
-      border-bottom: 2px solid #eee;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      background-attachment: fixed;
+    }
+
+    /* Chat Container */
+    .chat-container {
+      width: 600px; /* bigger width */
+      max-width: 95%;
+      height: 90vh; /* taller height */
+      display: flex;
+      flex-direction: column;
+      background: rgba(25, 25, 35, 0.95);
+      border-radius: 20px;
+      box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    /* Profile Header */
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      color: white;
+      font-weight: bold;
+      font-size: 1.4em;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
     }
 
     .profile-header img {
-      width: 100px;
-      height: 100px;
+      width: 65px;
+      height: 65px;
       border-radius: 50%;
-      border: 4px solid white;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease;
+      border: 3px solid white;
       object-fit: cover;
+      animation: floatImage 3s infinite ease-in-out;
     }
 
-    .profile-header img:hover {
-      transform: scale(1.1);
-    }
-
-    .profile-header h2 {
-      margin-top: 12px;
-      font-size: 20px;
-      color: white;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
-    }
-
-    /* Chat box */
+    /* Chat Box */
     #chat-box {
       flex: 1;
       padding: 20px;
       overflow-y: auto;
-      border-bottom: 1px solid #ddd;
-      max-height: 70vh;
       scroll-behavior: smooth;
+      font-size: 1.1em; /* larger readable text */
+      line-height: 1.6em;
     }
 
-    /* Messages */
+    /* Chat Messages */
     .message {
-      margin-bottom: 16px;
-      padding: 12px 16px;
-      border-radius: 16px;
+      margin: 12px 0;
+      padding: 14px 18px;
+      border-radius: 14px;
       max-width: 80%;
       word-wrap: break-word;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      font-size: 15px;
-      line-height: 1.5;
+      animation: fadeUp 0.4s ease-in-out;
     }
 
-    .user {
-      background: linear-gradient(135deg, #6bb9f0, #2980b9);
-      align-self: flex-end;
+    /* User Message */
+    .message.user {
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
       color: white;
+      margin-left: auto;
+      border-bottom-right-radius: 6px;
+      box-shadow: 0px 4px 10px rgba(0, 118, 255, 0.4);
     }
 
-    .bot {
-      background: linear-gradient(135deg, #a8e6cf, #56ab2f);
-      align-self: flex-start;
-      color: #003300;
+    /* Bot Message */
+    .message.bot {
+      background: linear-gradient(135deg, #43e97b, #38f9d7);
+      color: black;
+      margin-right: auto;
+      border-bottom-left-radius: 6px;
+      box-shadow: 0px 4px 10px rgba(0, 255, 163, 0.3);
     }
 
-    /* Chat input area */
-    form {
+    /* Input Form */
+    #chat-form {
       display: flex;
-      padding: 12px;
-      background-color: #f8f9fa;
-      border-top: 1px solid #ddd;
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.08);
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
     }
 
-    input {
+    #user-input {
       flex: 1;
-      padding: 12px 16px;
-      border: 1px solid #ccc;
-      border-radius: 24px;
-      font-size: 16px;
-      outline: none;
-      transition: border 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    input:focus {
-      border-color: #007bff;
-      box-shadow: 0 0 6px rgba(0,123,255,0.5);
-    }
-
-    button {
-      margin-left: 10px;
-      padding: 12px 20px;
-      background: linear-gradient(to right, #007bff, #0056b3);
-      color: white;
+      padding: 14px 18px;
       border: none;
-      border-radius: 24px;
-      font-size: 16px;
+      border-radius: 30px;
+      outline: none;
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      font-size: 1.1em;
+      transition: 0.3s;
+    }
+
+    #user-input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    #user-input:focus {
+      background: rgba(255, 255, 255, 0.25);
+      box-shadow: 0px 0px 12px #00c6ff;
+    }
+
+    /* Send Button */
+    button {
+      margin-left: 12px;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      font-size: 1.1em;
+      font-weight: bold;
       cursor: pointer;
-      transition: transform 0.2s ease, background 0.3s ease;
+      transition: 0.3s;
     }
 
     button:hover {
-      background: linear-gradient(to right, #0056b3, #003d80);
-      transform: scale(1.05);
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+      box-shadow: 0px 0px 14px rgba(106, 17, 203, 0.8);
+      transform: scale(1.07);
+    }
+
+    /* Scrollbar Styling */
+    #chat-box::-webkit-scrollbar {
+      width: 8px;
+    }
+    #chat-box::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+      border-radius: 10px;
+    }
+    #chat-box::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatImage {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
     }
   </style>
 </head>
 <body>
   <div class="chat-container">
-    
     <!-- Profile Header with Cyber Girl -->
     <div class="profile-header">
       <img src="GIRL.jpg" alt="Cyber Girl DP">
-      <h2>AMMU-KUTTY</h2>
+      <h2>NATPU_AI</h2>
     </div>
 
     <div id="chat-box"></div>
@@ -216,12 +191,17 @@
     const input = document.getElementById('user-input');
     const chatBox = document.getElementById('chat-box');
 
+    // Conversation memory
+    let conversationHistory = [];
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const userMessage = input.value.trim();
       if (!userMessage) return;
 
+      // Add user message to chat + memory
       appendMessage('You', userMessage, 'user');
+      conversationHistory.push({ role: 'user', parts: [{ text: userMessage }] });
       input.value = '';
 
       try {
@@ -231,16 +211,19 @@
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              contents: [{ parts: [{ text: userMessage }] }]
+              contents: conversationHistory
             })
           }
         );
 
         const data = await response.json();
         const botReply = data?.candidates?.[0]?.content?.parts?.[0]?.text || '🤖 No response received.';
-        appendMessage('Ammu', botReply, 'bot');
+
+        appendMessage('Nanban', botReply, 'bot');
+        conversationHistory.push({ role: 'model', parts: [{ text: botReply }] });
+
       } catch (error) {
-        appendMessage('Ammu', '⚠️ Error connecting to Gemini API.', 'bot');
+        appendMessage('Nanban', '⚠️ Error connecting to Gemini API.', 'bot');
         console.error('API error:', error);
       }
     });
